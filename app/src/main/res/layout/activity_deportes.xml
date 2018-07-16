@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Deportes">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DEPORTES"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/enviarRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="role: "/>
+
+        <TextView
+            android:id="@+id/roleSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"/>
+
+        <TextView
+            android:id="@+id/enviarId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Id: "/>
+
+        <TextView
+            android:id="@+id/idSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnListDeporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LISTAR" />
+
+            <Button
+                android:id="@+id/btnIrLiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIGAS" />
+
+        </LinearLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/txtListarDeportes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="TextView" />
+
+
+        <!--<android.support.v7.widget.RecyclerView
+            android:id="@+id/RecyclerId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+</RelativeLayout>
