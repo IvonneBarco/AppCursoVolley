@@ -92,13 +92,12 @@ public class IniciarSesion extends AppCompatActivity {
 
             }
         }) {
-            //LOS CAMPOS EN VERDE DEBEN SER IGUAL AL DEL ARCHIVO PHP
+
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("username", username.getText().toString());
                 params.put("password", contrasena.getText().toString());
                 return params;
-
             }
         };
         queue.add(stringRequest);

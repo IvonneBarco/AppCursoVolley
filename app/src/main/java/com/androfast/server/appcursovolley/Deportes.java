@@ -35,6 +35,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,37 +116,42 @@ public class Deportes extends AppCompatActivity {
     public void listar() {
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(Deportes.this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Conexion.URL_WEB_SERVICES + "listar-deportes.php",
+
+        // Initialize a new JsonArrayRequest instance
+        StringRequest stringRequest = new StringRequest(Method.POST, Conexion.URL_WEB_SERVICES + "listar-deportes.php",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Deporte sport = new Deporte();
-                        try {
-                            JSONObject objResultado = new JSONObject(response);
-                            String estado = objResultado.get("estado").toString();
-                            if (!estado.equalsIgnoreCase("exito")) {
-                                Toast.makeText(Deportes.this, "No hay datos", Toast.LENGTH_LONG).show();
-                            } else {
-                                sport.setId(objResultado.getJSONObject("deportes").optInt("id"));
-                                sport.setNombre(objResultado.getJSONObject("deportes").optString("nombre"));
-                                Intent intent = new Intent(Deportes.this, Ligas.class);
-                                intent.putExtra("DATOS_SPORT", sport);
-                                startActivity(intent);
-                            }
 
+                        String datosd = "";
+
+                        try {
+                            JSONObject objresultado = new JSONObject(response);
+                            JSONArray deportes = objresultado.getJSONArray("resultado");
+
+                            if (deportes.length()>0){
+                                for (int i = 0; i < deportes.length(); i++){
+                                    JSONObject deporte = deportes.getJSONObject(i);
+                                    datosd = deporte.getString("nombre").toString();
+
+                                    //listarDeportes.setText(deporte.getString("iddeporte").toString());
+                                }
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
-                        listarDeportes.setText(response);
+                        listarDeportes.setText(datosd);
                     }
+
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //
+                // Do something when error occurred
             }
         }) {
 
+            //LOS CAMPOS EN VERDE DEBEN SER IGUAL AL DEL ARCHIVO PHP
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", String.valueOf(user.getId()));
@@ -154,6 +160,7 @@ public class Deportes extends AppCompatActivity {
             }
         };
 
+        // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(stringRequest);
     }
 

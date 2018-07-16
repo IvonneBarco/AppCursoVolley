@@ -23,7 +23,8 @@
         <activity android:name=".Registrar" />
         <activity android:name=".Deportes" />
         <activity android:name=".Ligas" />
-        <activity android:name=".Recycler"></activity>
+        <activity android:name=".Recycler" />
+        <activity android:name=".PlanSemanal"></activity>
     </application>
 
 </manifest>
