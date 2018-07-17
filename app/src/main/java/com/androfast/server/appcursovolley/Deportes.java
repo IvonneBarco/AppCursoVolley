@@ -6,14 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androfast.server.appcursovolley.datos.Conexion;
-import com.androfast.server.appcursovolley.negocio.Deporte;
+import com.androfast.server.appcursovolley.negocio.DeportesVo;
 import com.androfast.server.appcursovolley.negocio.Usuario;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request.Method;
@@ -52,7 +49,7 @@ public class Deportes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deportes);
 
-        listarDeportes = (TextView) findViewById(R.id.txtListarDeportes);
+        //listarDeportes = (TextView) findViewById(R.id.txtListarDeportes);
 
         username = (TextView) findViewById(R.id.txtUsuario);
         contrasena = (TextView) findViewById(R.id.txtContrasena);
@@ -96,8 +93,8 @@ public class Deportes extends AppCompatActivity {
                                     sport = new DeportesVo();
                                     JSONObject objdeporte = deportes.getJSONObject(i);
 
-                                    sport.setIddeporte(String.valueOf(objdeporte.optInt("iddeporte")));
-                                    sport.setNombredeporte(objdeporte.optString("nombre"));
+                                    sport.setIddeporte(String.valueOf("COD DEPORTE: "+objdeporte.optInt("iddeporte")));
+                                    sport.setNombredeporte("NOMBRE DEPORTE: "+objdeporte.optString("nombre"));
                                     sport.setFoto(R.drawable.icon_sports);
                                     listaDeportes.add(sport);
 

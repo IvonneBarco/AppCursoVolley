@@ -1,4 +1,4 @@
-package com.androfast.server.appcursovolley;
+package com.androfast.server.appcursovolley.negocio;
 
 public class DeportesVo {
 

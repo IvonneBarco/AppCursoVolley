@@ -11,7 +11,7 @@
         android:layout_margin="10dp">
 
         <ImageView
-            android:id="@+id/id_imagen_deporte_list"
+            android:id="@+id/id_imagen_liga_list"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/icon_sports"/>
@@ -23,18 +23,18 @@
             android:layout_marginLeft="5dp">
 
             <TextView
-                android:id="@+id/id_deporte_list"
+                android:id="@+id/id_liga_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="ID"
                 android:textStyle="bold|normal"/>
             <TextView
-                android:id="@+id/id_nombre_deporte_list"
+                android:id="@+id/id_nombre_liga_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="DEPORTE"
+                android:text="LIGA"
                 android:textStyle="bold|normal"/>
 
 
