@@ -35,7 +35,6 @@ import java.util.Map;
 public class Ligas extends AppCompatActivity {
 
     private Usuario user;
-    private LigasVo liga;
     private DeportesVo sport;
     TextView nomdeporte, iddeporte;
 
@@ -57,7 +56,7 @@ public class Ligas extends AppCompatActivity {
         ((TextView) findViewById(R.id.idSesion)).setText("ID USUARIO: " + user.getId());
         ((TextView) findViewById(R.id.roleSesion)).setText("ROL: " + user.getRole());
 
-        String recuperamos_iddeporte = getIntent().getStringExtra("iddeporte");
+        final String recuperamos_iddeporte = getIntent().getStringExtra("iddeporte");
         ((TextView) findViewById(R.id.id_deporte)).setText("ID DEPORTE: " + recuperamos_iddeporte);
         // Fin * Recuperando variables usuario y deporte
 
@@ -106,14 +105,27 @@ public class Ligas extends AppCompatActivity {
                                     public void onClick(View view) {
                                         Toast.makeText(getApplicationContext(), "Selección: " +
                                                 listaLigas.get(recyclerLigas.getChildAdapterPosition(view)).getNombreliga(), Toast.LENGTH_LONG).show();
+                                        if (user.getRole().equalsIgnoreCase("admin")){
+                                            //Envio de variables DATOS_USER
+                                            Intent intentd = new Intent(Ligas.this, Entrenadores.class);
+                                            intentd.putExtra("DATOS_USER", user);
+                                            //Envio variable iddeporte
+                                            intentd.putExtra("idliga", listaLigas.get(recyclerLigas.getChildAdapterPosition(view)).getIdliga());
+                                            intentd.putExtra("deporte", recuperamos_iddeporte);
+                                            //intent.putExtra("role", user.getRole());
+                                            startActivity(intentd);
+                                        }else{
+                                            if (user.getRole().equalsIgnoreCase("entrenador")){
+                                                //Envio de variables DATOS_USER
+                                                Intent intentd = new Intent(Ligas.this, Atletas.class);
+                                                intentd.putExtra("DATOS_USER", user);
 
-                                        //Envio de variables DATOS_USER
-                                        Intent intentd = new Intent(Ligas.this, Ligas.class);
-                                        intentd.putExtra("DATOS_USER", user);
-                                        //Envio variable iddeporte
-                                        intentd.putExtra("ideliga", listaLigas.get(recyclerLigas.getChildAdapterPosition(view)).getIdliga());
-                                        startActivity(intentd);
-
+                                                //Envio variable iddeporte
+                                                intentd.putExtra("idliga", listaLigas.get(recyclerLigas.getChildAdapterPosition(view)).getIdliga());
+                                                intentd.putExtra("deporte", recuperamos_iddeporte);
+                                                startActivity(intentd);
+                                            }
+                                        }
                                     }
                                 });
                                 //fin evento click
