@@ -11,10 +11,10 @@ import com.androfast.server.appcursovolley.negocio.LigasVo;
 
 import java.util.ArrayList;
 
-public class AdaptadorLigas extends RecyclerView.Adapter<AdaptadorLigas.ViewHolderLigas> implements View.OnClickListener {
+public class AdaptadorLigas extends RecyclerView.Adapter<AdaptadorLigas.ViewHolderLigas> implements View.OnClickListener{
 
     ArrayList<LigasVo> listaLigas;
-    private View.OnClickListener listener;
+    private  View.OnClickListener listener;
 
     public AdaptadorLigas(ArrayList<LigasVo> listaLigas) {
         this.listaLigas = listaLigas;
@@ -30,24 +30,22 @@ public class AdaptadorLigas extends RecyclerView.Adapter<AdaptadorLigas.ViewHold
 
     public class ViewHolderLigas extends RecyclerView.ViewHolder {
 
-        TextView etiqueta_idliga, etiqueta_liga;
+        TextView etiqueta_liga, etiqueta_idliga;
         ImageView etiqueta_foto;
 
         public ViewHolderLigas(View itemView) {
             super(itemView);
-            etiqueta_liga = (TextView) itemView.findViewById(R.id.id_liga_list);
-            etiqueta_liga = (TextView) itemView.findViewById(R.id.id_nombre_liga_list);
-            etiqueta_foto = (ImageView) itemView.findViewById(R.id.id_imagen_liga_list);
-
+            etiqueta_idliga = (TextView)itemView.findViewById(R.id.id_liga_list);
+            etiqueta_liga = (TextView)itemView.findViewById(R.id.id_nombre_liga_list);
+            etiqueta_foto = (ImageView)itemView.findViewById(R.id.id_imagen_liga_list);
         }
-
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderLigas holder, int position) {
+    public void onBindViewHolder(AdaptadorLigas.ViewHolderLigas holder, int position) {
         holder.etiqueta_idliga.setText(listaLigas.get(position).getIdliga());
         holder.etiqueta_liga.setText(listaLigas.get(position).getNombreliga());
-        holder.etiqueta_foto.setImageResource(listaLigas.get(position).getFoto());
+        //holder.etiqueta_foto.setImageResource(listaLigas.get(position).getFoto());
     }
 
     @Override
@@ -55,14 +53,13 @@ public class AdaptadorLigas extends RecyclerView.Adapter<AdaptadorLigas.ViewHold
         return listaLigas.size();
     }
 
-    public void setOnClickListener(View.OnClickListener listener) {
+    public void setOnClickListener(View.OnClickListener listener){
         this.listener = listener;
     }
 
     @Override
     public void onClick(View view) {
-
-        if (listener != null) {
+        if (listener != null){
             listener.onClick(view);
         }
 

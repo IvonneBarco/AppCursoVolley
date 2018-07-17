@@ -48,7 +48,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
             <TextView
                 android:id="@+id/id_deporte"
                 android:layout_width="wrap_content"
@@ -57,24 +56,19 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/listar_liga"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LISTA:"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/RecyclerLigasId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnLiga"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LISTAR" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtListarLigas"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:text="TextView" />
+            />
     </LinearLayout>
 
 </RelativeLayout>

@@ -30,9 +30,7 @@ import java.util.Map;
 
 public class Deportes extends AppCompatActivity {
 
-    TextView listarDeportes;
     private Usuario user;
-
     TextView username, contrasena;
 
 
@@ -49,10 +47,8 @@ public class Deportes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deportes);
 
-        //listarDeportes = (TextView) findViewById(R.id.txtListarDeportes);
-
-        username = (TextView) findViewById(R.id.txtUsuario);
-        contrasena = (TextView) findViewById(R.id.txtContrasena);
+        /*username = (TextView) findViewById(R.id.txtUsuario);
+        contrasena = (TextView) findViewById(R.id.txtContrasena);*/
 
         //Se recupera los datos del usuario que inicio sesión
         Bundle bundle = getIntent().getExtras();
@@ -72,7 +68,7 @@ public class Deportes extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(Deportes.this);
 
-        // Initialize a new JsonArrayRequest instance
+        //Extraemos la info de un JSONArray
         StringRequest stringRequest = new StringRequest(Method.POST, Conexion.URL_WEB_SERVICES + "listar-deportes.php",
                 new Response.Listener<String>() {
                     @Override
@@ -93,8 +89,8 @@ public class Deportes extends AppCompatActivity {
                                     sport = new DeportesVo();
                                     JSONObject objdeporte = deportes.getJSONObject(i);
 
-                                    sport.setIddeporte(String.valueOf("COD DEPORTE: "+objdeporte.optInt("iddeporte")));
-                                    sport.setNombredeporte("NOMBRE DEPORTE: "+objdeporte.optString("nombre"));
+                                    sport.setIddeporte(String.valueOf(objdeporte.optInt("iddeporte")));
+                                    sport.setNombredeporte(objdeporte.optString("nombre"));
                                     sport.setFoto(R.drawable.icon_sports);
                                     listaDeportes.add(sport);
 
