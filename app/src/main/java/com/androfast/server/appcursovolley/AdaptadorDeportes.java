@@ -14,7 +14,7 @@ import com.androfast.server.appcursovolley.negocio.Deporte;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.ViewHolderDeportes> {
+public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.ViewHolderDeportes> implements View.OnClickListener{
 
     /*private Context context;
     private List<Deporte> videoBeansList;
@@ -42,6 +42,7 @@ public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.Vi
 
 
     ArrayList<DeportesVo> listaDeportes;
+    private  View.OnClickListener listener;
 
     public AdaptadorDeportes(ArrayList<DeportesVo> listaDeportes) {
         this.listaDeportes = listaDeportes;
@@ -51,6 +52,8 @@ public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.Vi
     public ViewHolderDeportes onCreateViewHolder(ViewGroup parent, int viewType) {
         //View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null, false);
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista_deportes, null, false);
+        //Escucha la selección
+        view.setOnClickListener(this);
         return new ViewHolderDeportes(view);
     }
 
@@ -65,6 +68,18 @@ public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.Vi
     @Override
     public int getItemCount() {
         return listaDeportes.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (listener != null){
+            listener.onClick(view);
+        }
+
     }
 
     public class ViewHolderDeportes extends RecyclerView.ViewHolder {

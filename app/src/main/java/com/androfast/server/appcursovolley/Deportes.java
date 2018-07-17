@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,7 +34,6 @@ import java.util.Map;
 public class Deportes extends AppCompatActivity {
 
     TextView listarDeportes;
-    Button btnListarDeporte, btnIrLiga;
     private Usuario user;
 
     TextView username, contrasena;
@@ -53,19 +53,12 @@ public class Deportes extends AppCompatActivity {
         setContentView(R.layout.activity_deportes);
 
         listarDeportes = (TextView) findViewById(R.id.txtListarDeportes);
-        btnListarDeporte = (Button) findViewById(R.id.btnListDeporte);
 
         username = (TextView) findViewById(R.id.txtUsuario);
         contrasena = (TextView) findViewById(R.id.txtContrasena);
 
-        btnListarDeporte.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
 
-            }
-        });
-
-        btnIrLiga = (Button) findViewById(R.id.btnIrLiga);
-        btnIrLiga.setOnClickListener(new View.OnClickListener() {
+        /*btnIrLiga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -73,7 +66,7 @@ public class Deportes extends AppCompatActivity {
                 intentd.putExtra("DATOS_USER", user);
                 startActivity(intentd);
             }
-        });
+        });*/
 
         //Se recupera los datos del usuario que inicio sesión
         Bundle bundle = getIntent().getExtras();
@@ -122,6 +115,15 @@ public class Deportes extends AppCompatActivity {
 
                                 }
                                 AdaptadorDeportes adapter = new AdaptadorDeportes(listaDeportes);
+
+                                //evento click
+                                adapter.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Toast.makeText(getApplicationContext(),"Selección: "+listaDeportes.get(recyclerDeportes.getChildAdapterPosition(view)).getNombredeporte(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                                //fin evento click
                                 recyclerDeportes.setAdapter(adapter);
                             }
                         } catch (JSONException e) {
@@ -149,6 +151,7 @@ public class Deportes extends AppCompatActivity {
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(stringRequest);
+
     }
 
 
