@@ -1,56 +1,29 @@
 package com.androfast.server.appcursovolley.negocio;
 
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Deporte implements Parcelable{
+public class Deporte {
 
     private int id;
     private String nombre;
     private String descripcion;
 
+    public Deporte(){}
 
-
-    protected Deporte(Parcel in) {
-        setId(in.readInt());
-        setNombre(in.readString());
-        setDescripcion(in.readString());
-    }
-
-    public static final Creator<Deporte> CREATOR = new Creator<Deporte>() {
-        @Override
-        public Deporte createFromParcel(Parcel in) {
-            return new Deporte(in);
-        }
-
-        @Override
-        public Deporte[] newArray(int size) {
-            return new Deporte[size];
-        }
-    };
-
-    public  Deporte(){
-
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(getId());
-        parcel.writeString(getNombre());
-        parcel.writeString(getDescripcion());
+    public Deporte(int id, String nombre, String descripcion){
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int idnombre) {
-        this.id = idnombre;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -68,4 +41,12 @@ public class Deporte implements Parcelable{
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+   /* public Bundle getPoetInfoBundle(){
+        Bundle bundle = new Bundle();
+        bundle.putInt("id",this.id);
+        bundle.putString("nombre",this.nombre);
+        bundle.putString("descripcion",this.descripcion);
+        return bundle;
+    }*/
 }

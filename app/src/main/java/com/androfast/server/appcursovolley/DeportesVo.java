@@ -2,13 +2,15 @@ package com.androfast.server.appcursovolley;
 
 public class DeportesVo {
 
+    private String iddeporte;
     private String nombredeporte;
     private int foto;
 
     public DeportesVo(){}
 
     //Constructor
-    public DeportesVo(String nombredeporte, int foto){
+    public DeportesVo(String iddeporte, String nombredeporte, int foto){
+        this.iddeporte = iddeporte;
         this.nombredeporte = nombredeporte;
         this.foto = foto;
     }
@@ -29,5 +31,11 @@ public class DeportesVo {
         this.foto = foto;
     }
 
+    public String getIddeporte() {
+        return iddeporte;
+    }
 
+    public void setIddeporte(String iddeporte) {
+        this.iddeporte = iddeporte;
+    }
 }

@@ -24,7 +24,8 @@
         <activity android:name=".Deportes" />
         <activity android:name=".Ligas" />
         <activity android:name=".Recycler" />
-        <activity android:name=".PlanSemanal"></activity>
+        <!-- <activity android:name=".PlanSemanal"></activity> -->
+        <activity android:name=".DetallesDeporte"></activity>
     </application>
 
 </manifest>
