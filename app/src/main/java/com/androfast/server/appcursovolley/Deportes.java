@@ -120,7 +120,16 @@ public class Deportes extends AppCompatActivity {
                                 adapter.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(getApplicationContext(),"Selección: "+listaDeportes.get(recyclerDeportes.getChildAdapterPosition(view)).getNombredeporte(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(),"Selección: "+
+                                                listaDeportes.get(recyclerDeportes.getChildAdapterPosition(view)).getNombredeporte(), Toast.LENGTH_LONG).show();
+
+                                        //Envio de variables DATOS_USER
+                                        Intent intentd = new Intent(Deportes.this, Ligas.class);
+                                        intentd.putExtra("DATOS_USER", user);
+                                        //Envio variable iddeporte
+                                        intentd.putExtra("iddeporte", listaDeportes.get(recyclerDeportes.getChildAdapterPosition(view)).getIddeporte());
+                                        startActivity(intentd);
+
                                     }
                                 });
                                 //fin evento click

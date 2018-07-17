@@ -44,17 +44,11 @@ public class Ligas extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
-        ((TextView) findViewById(R.id.idSesion)).setText(user.getId()+"");
-        ((TextView) findViewById(R.id.roleSesion)).setText(user.getRole());
+        ((TextView) findViewById(R.id.idSesion)).setText("ID USUARIO: "+ user.getId());
+        ((TextView) findViewById(R.id.roleSesion)).setText("ROL: "+ user.getRole());
 
-        Bundle bundleSport = getIntent().getExtras();
-        /*((TextView) findViewById(R.id.id_deporte)).setText("ID DEPORTE: "+sport.getId());
-        ((TextView) findViewById(R.id.nom_deporte)).setText("DEPORTE: " +sport.getNombre());*/
-
-        //((TextView) findViewById(R.id.nom_deporte)).setText("DEPORTE: " +bundleSport.getString("iddeporte"));
-        //String nombrerec = getIntent().getStringExtra("dato_nombre");
-
-        //nomdeporte.setText(nombrerec);
+        String recuperamos_iddeporte = getIntent().getStringExtra("iddeporte");
+        ((TextView) findViewById(R.id.id_deporte)).setText("ID DEPORTE: "+recuperamos_iddeporte);
 
 
 
