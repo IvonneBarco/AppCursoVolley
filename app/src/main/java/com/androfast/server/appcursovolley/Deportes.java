@@ -57,17 +57,6 @@ public class Deportes extends AppCompatActivity {
         username = (TextView) findViewById(R.id.txtUsuario);
         contrasena = (TextView) findViewById(R.id.txtContrasena);
 
-
-        /*btnIrLiga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intentd = new Intent(Deportes.this, Ligas.class);
-                intentd.putExtra("DATOS_USER", user);
-                startActivity(intentd);
-            }
-        });*/
-
         //Se recupera los datos del usuario que inicio sesión
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
@@ -98,12 +87,12 @@ public class Deportes extends AppCompatActivity {
                             JSONObject objresultado = new JSONObject(response);
                             JSONArray deportes = objresultado.getJSONArray("resultado");
 
-                            if (deportes.length()<=0){
+                            if (deportes.length() <= 0) {
                                 Toast.makeText(Deportes.this, "NO HAY DATOS", Toast.LENGTH_LONG).show();
 
-                            }else{
+                            } else {
 
-                                for (int i = 0; i < deportes.length(); i++){
+                                for (int i = 0; i < deportes.length(); i++) {
                                     sport = new DeportesVo();
                                     JSONObject objdeporte = deportes.getJSONObject(i);
 
@@ -120,7 +109,7 @@ public class Deportes extends AppCompatActivity {
                                 adapter.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        Toast.makeText(getApplicationContext(),"Selección: "+
+                                        Toast.makeText(getApplicationContext(), "Selección: " +
                                                 listaDeportes.get(recyclerDeportes.getChildAdapterPosition(view)).getNombredeporte(), Toast.LENGTH_LONG).show();
 
                                         //Envio de variables DATOS_USER
@@ -163,70 +152,5 @@ public class Deportes extends AppCompatActivity {
 
     }
 
-
-
-
-    /* EVENTO DE LISTAR LISTVIEW EN BOTON
-    public void listar() {
-        // Initialize a new RequestQueue instance
-        RequestQueue requestQueue = Volley.newRequestQueue(Deportes.this);
-
-        // Initialize a new JsonArrayRequest instance
-        StringRequest stringRequest = new StringRequest(Method.POST, Conexion.URL_WEB_SERVICES + "listar-deportes.php",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        DeportesVo sport = null;
-
-                        try {
-                            JSONObject objresultado = new JSONObject(response);
-                            JSONArray deportes = objresultado.getJSONArray("resultado");
-
-                            if (deportes.length()<=0){
-                                Toast.makeText(Deportes.this, "NO HAY DATOS", Toast.LENGTH_LONG).show();
-
-                            }else{
-
-                                for (int i = 0; i < deportes.length(); i++){
-                                    sport = new DeportesVo();
-                                    JSONObject objdeporte = deportes.getJSONObject(i);
-
-                                    sport.setIddeporte(String.valueOf(objdeporte.optInt("iddeporte")));
-                                    sport.setNombredeporte(objdeporte.optString("nombre"));
-                                    sport.setFoto(R.drawable.icon_sports);
-                                    listaDeportes.add(sport);
-
-
-                                }
-                                AdaptadorDeportes adapter = new AdaptadorDeportes(listaDeportes);
-                                recyclerDeportes.setAdapter(adapter);
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(Deportes.this, "NO HAY CONEXIÓN", Toast.LENGTH_LONG).show();
-                        }
-
-                    }
-
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // Do something when error occurred
-            }
-        }) {
-
-            //LOS CAMPOS EN VERDE DEBEN SER IGUAL AL DEL ARCHIVO PHP
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("id", String.valueOf(user.getId()));
-                params.put("role", user.getRole());
-                return params;
-            }
-        };
-
-        // Add JsonArrayRequest to the RequestQueue
-        requestQueue.add(stringRequest);
-    }*/
 
 }

@@ -16,31 +16,6 @@ import java.util.List;
 
 public class AdaptadorDeportes extends RecyclerView.Adapter<AdaptadorDeportes.ViewHolderDeportes> implements View.OnClickListener{
 
-    /*private Context context;
-    private List<Deporte> videoBeansList;
-
-    public AdaptadorDeportes(ArrayList<Deporte> objects) {
-        super(context, resource, objects);
-        this.context = context;
-        this.videoBeansList = objects;
-    }
-
-
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-
-        view = inflater.inflate(R.layout.item_lista_deportes, null);
-        Deporte videoBean = videoBeansList.get(position);
-
-        TextView titleTextVIew = (TextView) view.findViewById(R.id.id_nombredeporte_list);
-        titleTextVIew.setText(videoBean.getNombre());
-
-        return view;
-    }*/
-
-
     ArrayList<DeportesVo> listaDeportes;
     private  View.OnClickListener listener;
 
