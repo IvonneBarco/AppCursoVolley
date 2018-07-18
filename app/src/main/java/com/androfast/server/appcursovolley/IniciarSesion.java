@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class IniciarSesion extends AppCompatActivity {
 
-    TextView username, contrasena, nuevo;
+    TextView username, contrasena;
     Button login;
 
     @Override
@@ -39,15 +39,6 @@ public class IniciarSesion extends AppCompatActivity {
         username = (TextView) findViewById(R.id.txtUsuario);
         contrasena = (TextView) findViewById(R.id.txtContrasena);
         login = (Button) findViewById(R.id.btnIniciarSesion);
-        nuevo = (TextView) findViewById(R.id.txtNuevoUsuario);
-
-        nuevo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(IniciarSesion.this, Registrar.class);
-                startActivity(intent);
-            }
-        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +46,10 @@ public class IniciarSesion extends AppCompatActivity {
                 iniciarSesion();
             }
         });
+
     }
+
+
 
     public void iniciarSesion() {
         RequestQueue queue = Volley.newRequestQueue(IniciarSesion.this);

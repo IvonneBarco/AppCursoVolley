@@ -125,8 +125,8 @@ public class Entrenadores extends AppCompatActivity {
                 params.put("role", user.getRole());
                 params.put("deporte", "1");
                 params.put("liga", "1");
-                /*params.put("deporte", String.valueOf(getIntent().getStringExtra("iddeporte")));
-                params.put("liga", String.valueOf(getIntent().getStringExtra("idliga")));*/
+                //params.put("deporte",getIntent().getStringExtra("iddeporte"));
+                //params.put("liga", String.valueOf(getIntent().getStringExtra("idliga")));
                 return params;
             }
         };

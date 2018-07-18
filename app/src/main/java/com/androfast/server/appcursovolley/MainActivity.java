@@ -28,7 +28,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     TextView listarUsuario;
-    Button ok, btndeportes;
+    Button btn_listar, btndeportes, btnEntrenoProg, btnInciarEntreno;
     private Usuario user;
 
     @Override
@@ -37,11 +37,32 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         listarUsuario = (TextView) findViewById(R.id.txtListar);
-        ok = (Button) findViewById(R.id.btnOk);
-        ok.setOnClickListener(new View.OnClickListener() {
+
+        btnEntrenoProg = (Button) findViewById(R.id.btn_entreno_programado);
+        btnEntrenoProg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(MainActivity.this, Registrar.class);
+                startActivity(intent3);
+
+            }
+        });
+
+        btnInciarEntreno = (Button) findViewById(R.id.btn_iniciar_entreno);
+        btnInciarEntreno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent2 = new Intent(MainActivity.this, Registrar2.class);
+                startActivity(intent2);
+            }
+        });
+
+        btn_listar = (Button) findViewById(R.id.btn_listar_user);
+        btn_listar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 listar();
-                Toast.makeText(MainActivity.this,"Click",Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -49,13 +70,13 @@ public class MainActivity extends AppCompatActivity {
         btndeportes.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Deportes.class);
-                intent.putExtra("DATOS_USER",user);
+                intent.putExtra("DATOS_USER", user);
                 startActivity(intent);
             }
         });
         Bundle bundle = getIntent().getExtras();
         user = bundle.getParcelable("DATOS_USER");
-        ((TextView) findViewById(R.id.txtIdSesion)).setText(user.getId()+"");
+        ((TextView) findViewById(R.id.txtIdSesion)).setText(user.getId() + "");
         ((TextView) findViewById(R.id.txtNombreSesion)).setText(user.getNombre());
         ((TextView) findViewById(R.id.txtUsuarioSesion)).setText(user.getUsername());
         ((TextView) findViewById(R.id.txtRole)).setText(user.getRole());
