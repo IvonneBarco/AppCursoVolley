@@ -36,7 +36,6 @@ public class Atletas extends AppCompatActivity {
     private LigasVo liga;
     private DeportesVo sport;
     TextView nomdeporte, iddeporte;
-    Button btnListar;
 
     //RECYCLER
     ArrayList<AtletaVo> listaAtletas;
@@ -67,19 +66,6 @@ public class Atletas extends AppCompatActivity {
         recyclerAtletas.setHasFixedSize(true);
         //Fin * Recycler
 
-        btnListar = (Button)findViewById(R.id.btn_listar);
-        btnListar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listar();
-            }
-        });
-
-
-
-    }
-
-    public void listar(){
         // Initialize a new RequestQueue instance
         RequestQueue requestQueue = Volley.newRequestQueue(Atletas.this);
 
@@ -136,14 +122,16 @@ public class Atletas extends AppCompatActivity {
                 params.put("id", String.valueOf(user.getId()));
                 //params.put("role", user.getRole());
                 //params.put("deporte", "1");
-                params.put("liga", "1");
-                /*params.put("deporte", String.valueOf(getIntent().getStringExtra("iddeporte")));
-                params.put("liga", String.valueOf(getIntent().getStringExtra("idliga")));*/
+                //params.put("liga", "2");
+                params.put("liga", String.valueOf(getIntent().getStringExtra("idliga")));
                 return params;
             }
         };
 
         // Add JsonArrayRequest to the RequestQueue
         requestQueue.add(stringRequest);
+
+
     }
+
 }

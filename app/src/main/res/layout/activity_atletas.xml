@@ -50,11 +50,6 @@
         android:layout_height="wrap_content"
         android:text="ID DEPORTE"/>
 
-    <Button
-        android:id="@+id/btn_listar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LISTAR"/>
 
     <TextView
         android:id="@+id/listar_atleta"
