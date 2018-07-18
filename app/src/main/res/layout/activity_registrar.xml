@@ -60,6 +60,18 @@
                     android:inputType="date"/>
             </android.support.design.widget.TextInputLayout>
 
+            <Button
+                android:id="@+id/btn_fecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FECHA"/>
+
+            <Button
+               android:id="@+id/btn_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HORA"/>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

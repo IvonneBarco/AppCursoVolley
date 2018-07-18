@@ -1,5 +1,7 @@
 package com.androfast.server.appcursovolley;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.androfast.server.appcursovolley.datos.Conexion;
@@ -26,12 +30,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Registrar2 extends AppCompatActivity {
 
     //Entreno iniciar
+
+    Button btnfecha, btnhora;
+    EditText efecha,ehora;
+    private  int dia,mes,ano,hora,minutos;
 
     EditText descripcion;
     Button iniciar, actualizar, parar;
@@ -44,6 +53,24 @@ public class Registrar2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar2);
+
+        //HORA Y FECHA
+        btnfecha=(Button)findViewById(R.id.btn_fecha);
+        btnhora=(Button)findViewById(R.id.btn_hora);
+        efecha=(EditText)findViewById(R.id.fecha_id);
+        ehora=(EditText)findViewById(R.id.hinicio_id);
+        btnfecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fecha();
+            }
+        });
+        btnhora.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hora();
+            }
+        });
 
         descripcion = (EditText) findViewById(R.id.descripcion_id);
         iniciar = (Button) findViewById(R.id.btnagregar);
@@ -72,6 +99,36 @@ public class Registrar2 extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void fecha(){
+        final Calendar c= Calendar.getInstance();
+        dia=c.get(Calendar.DAY_OF_MONTH);
+        mes=c.get(Calendar.MONTH);
+        ano=c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                efecha.setText(dayOfMonth+"/"+(monthOfYear+1)+"/"+year);
+            }
+        }
+                ,dia,mes,ano);
+        datePickerDialog.show();
+    }
+
+    public void hora(){
+        final Calendar c= Calendar.getInstance();
+        hora=c.get(Calendar.HOUR_OF_DAY);
+        minutos=c.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                ehora.setText(hourOfDay+":"+minute);
+            }
+        },hora,minutos,false);
+        timePickerDialog.show();
     }
 
     public void registrar() {
